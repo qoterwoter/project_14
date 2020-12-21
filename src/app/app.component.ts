@@ -1,10 +1,38 @@
 import { Component } from '@angular/core';
-
+import { MyWorker, MyWorkersDataBase, MyWorkerType } from './shared/worker.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'lection12';
+  title = 'Список сотрудников';
+  workers: MyWorker[] = MyWorkersDataBase;
+  myWorkerType = MyWorkerType;
+
+  getByType(type: number) {
+    return this.workers.filter(worker => worker.type == type);
+  }
+
+  onDeleteWorker(id: number) {
+     console.log('Deleted worker with id: '+ id);
+    let index = this.workers.findIndex(worker=> worker.id === id);
+    if(index !== -1) {
+      this.workers.splice(index,1);
+    }
+  }
+
+  onAddWorker(worker: MyWorker) {
+    let id = this.workers.length > 0 ? this.workers[this.workers.length-1].id + 1: 1;
+    worker.id = id;
+    if(worker.name.trim() != '' || worker.surname.trim() != '') {
+      this.workers.push(worker);
+    }
+  }
+  
+  onEditWorker(worker: MyWorker) {
+    if(worker.name.trim() != '' || worker.surname.trim() != '') {
+      this.workers[worker.id-1] = worker;
+    }
+  }
 }
