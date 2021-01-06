@@ -2,6 +2,7 @@ export interface MyWorker {
     name: string;
     surname: string;
     type: number;
+    phone: string;
     id?: number;
 }
 
@@ -13,8 +14,8 @@ export enum MyWorkerType {
 }
 
 export let MyWorkersDataBase: MyWorker[] = [
-    {id:1, name: 'Ivan',surname: 'Ivanov', type: 0},
-    {id:2, name: 'Petr',surname: 'Petrov', type: 1},
-    {id:3, name: 'Sidr',surname: 'Sidorov', type: 2},
-    {id:4, name: 'Vasiliy',surname: 'Vasiliyev', type: 3},
+    {id:1, name: 'Ivan',surname: 'Ivanov',phone:"+79266132402", type: MyWorkerType.programmer},
+    {id:2, name: 'Petr',surname: 'Petrov',phone:"+79266132402", type:  MyWorkerType.designer},
+    {id:3, name: 'Sidr',surname: 'Sidorov',phone:"+79266132402", type:  MyWorkerType.copywriter},
+    {id:4, name: 'Vasiliy',surname: 'Vasiliyev',phone:"+79266132402", type: MyWorkerType.manager},
 ]

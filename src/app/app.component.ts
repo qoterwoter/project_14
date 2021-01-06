@@ -9,9 +9,10 @@ export class AppComponent {
   title = 'Список сотрудников';
   workers: MyWorker[] = MyWorkersDataBase;
   myWorkerType = MyWorkerType;
-
+  editingUserId: number | null;
+   
   getByType(type: number) {
-    return this.workers.filter(worker => worker.type == type);
+    return this.workers.filter(worker => worker.type === type);
   }
 
   onDeleteWorker(id: number) {
@@ -30,9 +31,14 @@ export class AppComponent {
     }
   }
   
-  onEditWorker(worker: MyWorker) {
-    if(worker.name.trim() != '' || worker.surname.trim() != '') {
-      this.workers[worker.id-1] = worker;
-    }
+  onEditWorker(workerId: number) {
+    this.editingUserId = workerId
+  }
+  
+  onSaveWorker(worker: MyWorker) {
+    console.log(worker);
+    const workerToUpdate = this.workers.findIndex(worker2 => worker2.id === worker.id);
+    this.workers[workerToUpdate] = worker;
+    this.editingUserId = null;
   }
 }

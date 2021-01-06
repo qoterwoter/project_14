@@ -1,0 +1,11 @@
+.ng-valid[required] {
+    border-left: 5px solid rgb(109, 255, 109);
+}
+
+.ng-touched .ng-invalid {
+    border-left: 5px solid rgb(255, 155, 155);
+}
+
+.form-control {
+    transition: .1s;
+}

@@ -5,9 +5,9 @@
         </div>
     </div>
     <app-addform-worker (addWorker)="onAddWorker($event)"></app-addform-worker>
-    <app-table-worker [title]='"Программисты"' [workers]="getByType(myWorkerType.programmer)" (deleteWorker)='onDeleteWorker($event)'></app-table-worker>
-    <app-table-worker [title]='"Дизайнеры"' [workers]="getByType(myWorkerType.designer)" (deleteWorker)='onDeleteWorker($event)'></app-table-worker>
-    <app-table-worker [title]='"Копирайтеры"' [workers]="getByType(myWorkerType.copywriter)" (deleteWorker)='onDeleteWorker($event)'></app-table-worker>
-    <app-table-worker [title]='"Мэнэджеры"' [workers]="getByType(myWorkerType.manager)" (deleteWorker)='onDeleteWorker($event)'></app-table-worker>
-    <app-editform-worker (editWorker)='onEditWorker($event)'></app-editform-worker>
+    <app-table-worker [title]='"Программисты"' [editingUserId]="editingUserId" [workers]="getByType(myWorkerType.programmer)" (deleteWorker)='onDeleteWorker($event)' (editWorker)='onEditWorker($event)' (saveWorker)='onSaveWorker($event)'></app-table-worker>
+    <app-table-worker [title]='"Дизайнеры"' [editingUserId]="editingUserId" [workers]="getByType(myWorkerType.designer)" (deleteWorker)='onDeleteWorker($event)' (editWorker)='onEditWorker($event)' (saveWorker)='onSaveWorker($event)'></app-table-worker>
+    <app-table-worker [title]='"Копирайтеры"' [editingUserId]="editingUserId" [workers]="getByType(myWorkerType.copywriter)" (deleteWorker)='onDeleteWorker($event)' (editWorker)='onEditWorker($event)' (saveWorker)='onSaveWorker($event)'></app-table-worker>
+    <app-table-worker [title]='"Мэнэджеры"' [editingUserId]="editingUserId" [workers]="getByType(myWorkerType.manager)" (deleteWorker)='onDeleteWorker($event)' (editWorker)='onEditWorker($event)' (saveWorker)='onSaveWorker($event)'></app-table-worker>
+    <!-- <app-editform-worker (editWorker)='onEditWorker($event)'></app-editform-worker> -->
 </div>

@@ -1,24 +1,39 @@
-<div class="row mb-4 mt-2">
-    <div class="col-12">
-        <h5>Добавить сотрудника</h5>
-    </div>
-    <div class="col-4">
-        <input type="text" class="form-control" placeholder="Имя" [(ngModel)]="name">
-    </div>
-    <div class="col-4">
-        <input type="text" class="form-control" placeholder="Фамилия" [(ngModel)]="surname">
-    </div>
-    <div class="col-4">
-        <select class="custom-select" [(ngModel)]="type">
+<form [formGroup]="myAddForm">
+    <div class="row mb-4 mt-2">
+        <div class="col-12">
+            <h5>Добавить сотрудника</h5>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+            <input type="text" formControlName="name" class="form-control" placeholder="Имя" id='name' [(ngModel)]="name" required>
+            <div class="alert alert-danger" *ngIf="myAddForm.controls['name'].invalid&&myAddForm.controls['name'].touched">
+                <p>Не указано имя</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+            <input type="text" formControlName="surname" class="form-control" placeholder="Фамилия" [(ngModel)]="surname" required>
+            <div class="alert alert-danger" *ngIf="myAddForm.controls['surname'].invalid&&myAddForm.controls['surname'].touched">
+                <p>Не указана Фамилия</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+            <input type="text" formControlName="phone" class="form-control" placeholder="Телефон" [(ngModel)]="phone" required>
+            <div class="alert alert-danger" *ngIf="myAddForm.controls['phone'].invalid&&myAddForm.controls['phone'].touched">
+                <p>Не указан номер телефона</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+            <select class="custom-select" [(ngModel)]="type" formControlName="type">
+
             <option [ngValue]="myWorkerType.programmer">Программист</option>
             <option [ngValue]="myWorkerType.designer">Дизайнер</option>
             <option [ngValue]="myWorkerType.manager">Менеджер</option>
             <option [ngValue]="myWorkerType.copywriter">Копирайтер</option>
         </select>
-    </div>
-    <div class="col-12 mt-2">
-        <button class="btn btn-outline-primary btn-sm" (click)='onAddWorker()'>
+        </div>
+        <div class="col-12 mt-2">
+            <button type='submit' class="btn btn-outline-primary btn-sm" (click)='onAddWorker()' [disabled]='myAddForm.invalid'>
             Добавить
         </button>
+        </div>
     </div>
-</div>
+</form>

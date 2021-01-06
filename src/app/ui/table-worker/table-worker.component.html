@@ -5,18 +5,35 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col" [style.width]='"100px"'>Id</th>
-                <th scope="col" [style.width]='"40%"'>Name</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
                 <th scope="col">Surname</th>
-                <th scope="col" [style.width]='"150px"'></th>
+                <th scope="col">Phone</th>
+                <th scope="col">Действия</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let worker of workers">
-                <th scope="row">{{worker.id}}</th>
-                <td>{{worker.name}}</td>
-                <td>{{worker.surname}}</td>
-                <td><button class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker(worker.id)">Удалить</button></td>
+                <ng-container *ngIf="worker.id!=editingUserId; else elseTemplate">
+                    <th>{{worker.id}}</th>
+                    <td>{{worker.name}}</td>
+                    <td>{{worker.surname}}</td>
+                    <td>{{worker.phone}}</td>
+                    <td>
+                        <button class="btn btn-outline-primary btn-sm" (click)='onEditWorker(worker.id)'>Изменить</button> &nbsp;
+                        <button class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker(worker.id)">Удалить</button>
+                    </td>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <th>{{worker.id}}</th>
+                    <td><input class="form-control form-control-sm" type="text" value='{{worker.name}}' [(ngModel)]='worker.name'></td>
+                    <td><input class="form-control form-control-sm" type="text" value='{{worker.surname}}' [(ngModel)]='worker.surname'></td>
+                    <td><input class="form-control form-control-sm" type="text" value='{{worker.phone}}' [(ngModel)]='worker.phone'></td>
+                    <td>
+                        <button class="btn btn-outline-primary btn-sm" (click)='onSaveWorker(worker)'>Сохранить</button> &nbsp;
+                        <button class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker(worker.id)">Удалить</button>
+                    </td>
+                </ng-template>
             </tr>
         </tbody>
     </table>

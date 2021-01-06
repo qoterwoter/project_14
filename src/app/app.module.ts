@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TableWorkerComponent } from './ui/table-worker/table-worker.component';
 import { AddformWorkerComponent } from './ui/addform-worker/addform-worker.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditformWorkerComponent } from './ui/editform-worker/editform-worker.component';
 
 @NgModule({
@@ -17,6 +17,7 @@ import { EditformWorkerComponent } from './ui/editform-worker/editform-worker.co
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

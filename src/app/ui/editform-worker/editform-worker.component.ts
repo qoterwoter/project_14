@@ -11,6 +11,7 @@ export class EditformWorkerComponent implements OnInit {
   surname: string;
   type = 0;
   id: number;
+  phone: string
   myWorkerType = MyWorkerType;
 
   @Output() editWorker = 
@@ -27,6 +28,7 @@ export class EditformWorkerComponent implements OnInit {
       name: this.name,
       surname: this.surname,
       type: this.type,
+      phone: this.phone,
     };
     console.log(worker);
     this.editWorker.emit(worker);
