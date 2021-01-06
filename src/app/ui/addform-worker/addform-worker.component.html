@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-            <input type="text" formControlName="phone" class="form-control" placeholder="Телефон" [(ngModel)]="phone" required>
+            <input  [textMask]="{mask: mask}" type="text" formControlName="phone" class="form-control" placeholder="+7(777)-777-77-77" [(ngModel)]="phone" required>
             <div class="alert alert-danger" *ngIf="myAddForm.controls['phone'].invalid&&myAddForm.controls['phone'].touched">
                 <p>Не указан номер телефона</p>
             </div>

@@ -5,19 +5,19 @@ import { AppComponent } from './app.component';
 import { TableWorkerComponent } from './ui/table-worker/table-worker.component';
 import { AddformWorkerComponent } from './ui/addform-worker/addform-worker.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditformWorkerComponent } from './ui/editform-worker/editform-worker.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableWorkerComponent,
     AddformWorkerComponent,
-    EditformWorkerComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    TextMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
