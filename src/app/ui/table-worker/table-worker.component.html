@@ -5,10 +5,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">Phone</th>
+                <th scope="col" [style.width]="'7%'">Id</th>
+                <th scope="col" [style.width]="'16%'">Name</th>
+                <th scope="col" [style.width]="'20%'">Surname</th>
+                <th scope="col" [style.width]="'25%'">Phone</th>
                 <th scope="col">Действия</th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
                     <th>{{worker.id}}</th>
                     <td><input class="form-control form-control-sm" type="text" value='{{worker.name}}' [(ngModel)]='worker.name'></td>
                     <td><input class="form-control form-control-sm" type="text" value='{{worker.surname}}' [(ngModel)]='worker.surname'></td>
-                    <td><input class="form-control form-control-sm" type="text" value='{{worker.phone}}' [(ngModel)]='worker.phone'></td>
+                    <td><input [textMask]="{mask: mask}" class="form-control form-control-sm" type="text" value='{{worker.phone}}' [(ngModel)]='worker.phone'></td>
                     <td>
                         <button class="btn btn-outline-primary btn-sm" (click)='onSaveWorker(worker)'>Сохранить</button> &nbsp;
                         <button class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker(worker.id)">Удалить</button>

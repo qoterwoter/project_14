@@ -1,7 +1,6 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MyWorker, MyWorkerType } from 'src/app/shared/worker.model';
-import { TextMaskModule } from 'angular2-text-mask';
 @Component({
   selector: 'app-addform-worker',
   templateUrl: './addform-worker.component.html',
@@ -12,7 +11,7 @@ export class AddformWorkerComponent implements OnInit {
   name: string;
   surname: string;
   type = MyWorkerType.programmer;
-  phone='+7';
+  phone: string;
   myWorkerType = MyWorkerType;
   mask = [
     '+',
@@ -34,14 +33,18 @@ export class AddformWorkerComponent implements OnInit {
     /\d/,
   ];
 
-  @Output() addWorker = 
-  new EventEmitter<MyWorker>();
+  @Output() addWorker = new EventEmitter<MyWorker>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  myAddForm : FormGroup = new FormGroup({
+    "name": new FormControl("", [Validators.required, this.noSpaceValidator]),
+    "surname": new FormControl("",[Validators.required, this.noSpaceValidator]),
+    "phone": new FormControl("", Validators.compose([Validators.required, Validators.min(7), this.noSpaceValidator])),
+    "type": new FormControl("", [Validators.required]),
+});
   onAddWorker() {
     let worker: MyWorker = {
       name: this.name.trim(),
@@ -51,17 +54,11 @@ export class AddformWorkerComponent implements OnInit {
     };
     console.log(worker);
     this.addWorker.emit(worker);
-    this.myAddForm.setValue({ name: '', surname: '', phone: '',value:0 });
   }
   noSpaceValidator(control: FormControl) {
     const haveSpace = (control.value || '').trim().length == 0;
     const valid = !haveSpace;
     return valid ? null : { 'whitespace': true };
   }
-    myAddForm : FormGroup = new FormGroup({
-      "name": new FormControl("", [Validators.required, this.noSpaceValidator]),
-      "surname": new FormControl("",[Validators.required, this.noSpaceValidator]),
-      "phone": new FormControl("", [Validators.required, this.noSpaceValidator]),
-      "type": new FormControl('', [Validators.required]),
-  });
+
 }

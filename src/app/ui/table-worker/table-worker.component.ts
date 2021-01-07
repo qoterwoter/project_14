@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output,EventEmitter  } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter  } from '@angular/core';
 import { MyWorker } from 'src/app/shared/worker.model';
 
 @Component({
@@ -16,7 +16,26 @@ export class TableWorkerComponent implements OnInit {
   name: string;
   surname: string;
   phone: string;
-  
+  mask = [
+    '+',
+    '7',
+    '(',
+    /[1-9]/,
+    /\d/,
+    /\d/,
+    ')',
+    '-',
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+  ];
+
   @Output() deleteWorker = new EventEmitter<number>();
   @Output() editWorker = new EventEmitter<number>();
   @Output() saveWorker = new EventEmitter<MyWorker>();
