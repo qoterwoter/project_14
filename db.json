@@ -1,17 +1,11 @@
 {
   "workers": [
     {
-      "id": 3
-    },
-    {
       "id": 4,
       "name": "Vasiliy",
       "surname": "Vasiliyev",
       "phone": "+7(926)613-2413",
       "type": 3
-    },
-    {
-      "id": 5
     },
     {
       "name": "Александр",
